@@ -20,11 +20,11 @@ CASValidateURL https://erasche.github.io/fakeCAS/serviceValidate.html
 </pre>
 <b><code>/etc/apache2/sites-enabled/default-ssl.conf</code></b>
 <pre class="code">
-&lt;Location "/galaxy"&gt;
+&lt;Location "/"&gt;
 AuthName "CAS"
 AuthType CAS
 Require valid-user
-RequestHeader set CAS-User "%{REMOTE_USER}s@tamu.edu"
+RequestHeader set CAS-User "%{REMOTE_USER}s@example.com"
 &lt;/Location&gt;
 </pre>
 	</body>
