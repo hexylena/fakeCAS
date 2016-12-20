@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+		<style type="text/css">
+			#service { font-family: monospace }
+			.code {
+				white-space: pre-wrap;
+				background: #232629;
+				color: white;
+				padding: 1em;
+				box-shadow: inset 0 0 10px #000000;
+			}
+			.qq {
+				text-decoration: none;
+				color: white;
+				border-radius: 4px;
+				text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+
+				background: rgb(28, 184, 65);
+				padding: 0.45em;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Dummy CAS Server</h1>
+		<p>
+		Hi, you're authenticating to <span id="service">unknown</span>
+		</p>
+
+		<a id="login" href="#" class="qq">Login as test@example.com</a>
+		<p>
+			Simple service which pretends to be a CAS server. It only ever authenticates as <code>test@example.com</code>
+		</p>
+		<h2>Apache Configuration</h2>
+<b><code>/etc/apache2/mods-enabled/auth_cas.conf</code></b>
+<pre class="code">
+CASLoginURL    https://erasche.github.io/fakeCAS/login.html
+CASValidateURL https://erasche.github.io/fakeCAS/serviceValidate.html
+</pre>
+<b><code>/etc/apache2/sites-enabled/default-ssl.conf</code></b>
+<pre class="code">
+&lt;Location "/galaxy"&gt;
+AuthName "CAS"
+AuthType CAS
+Require valid-user
+RequestHeader set CAS-User "%{REMOTE_USER}s@tamu.edu"
+&lt;/Location&gt;
+</pre>
+
+<script type="text/javascript">
+var href = window.location.href;
+var service = decodeURIComponent(href.substring(href.indexOf("login.html?") + 19));
+
+// From MDN
+function getRandomArbitrary(min, max) {
+	return Math.random() * (max - min) + min;
+}
+
+$("#service").text(service);
+$("#login").attr('href', service +'?ticket=ST-' + getRandomArbitrary(10000000000000000, 20000000000000000));
+</script>
+	</body>
+</html>
