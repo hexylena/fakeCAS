@@ -11,7 +11,11 @@
 		</style>
 	</head>
 	<body>
-		<h1>Fake CAS Server</h1>
+		<div class="content">
+			<div class="header">
+				<h1>Fake CAS Server</h1>
+			</div>
+			<div class="content-content">
 		<h2>Apache Configuration</h2>
 <b><code>/etc/apache2/mods-enabled/auth_cas.conf</code></b>
 <pre class="code">
@@ -27,5 +31,7 @@ Require valid-user
 RequestHeader set CAS-User "%{REMOTE_USER}s@example.com"
 &lt;/Location&gt;
 </pre>
+</div>
+</div>
 	</body>
 </html>
