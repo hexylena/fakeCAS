@@ -12,9 +12,14 @@
 				background: rgb(28, 184, 65);
 				padding: 0.45em;
 			}
+			.Absolute-Center {
+				margin: auto;
+				position: absolute;
+				top: 0; left: 0; bottom: 0; right: 0;
+			}
 		</style>
 	</head>
-	<body>
+	<body style="background-image: url(pattern.svg);background-size: cover;display: flex; align-items: center; justify-content: center">
 		<div style="width: 25em;background: #eeeeee;margin: auto;padding: 0; box-shadow: 2px 4px 5px 0px #aaa; border-radius: 1%;">
 			<div style="background: #5d4fa0;; padding: 1.3em; color:white">
 				<h1 style="text-align:center;margin:0;font-family: monospace">Simple CAS Server</h1>
@@ -27,7 +32,7 @@
 				</div>
 
 				<div>
-				<a id="login" href="#" class="qq" style="display: none;text-align: center;padding-top:0.7em;padding-bottom:0.7em; box-shadow: inset 0 0 9px 0px rgb(43, 136, 66);">Login to <span id="service">unknown</span></a>
+				<a id="login" href="#" class="qq" style="border-radius: 0px; border: 1px solid #138c30;display: none;text-align: center;padding-top:0.7em;padding-bottom:0.7em;">Login to <span id="service">unknown</span></a>
 				</div>
 				<div id="error" style="display: none">
 					<div style="background: red; padding: 1em">
