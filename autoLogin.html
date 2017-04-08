@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+	</head>
+	<body>
+<script type="text/javascript">
+var href = window.location.href;
+var service = decodeURIComponent(href.substring(href.indexOf("autoLogin.html") + 23));
+
+// From MDN
+function getRandomArbitrary(min, max) {
+	return Math.random() * (max - min) + min;
+}
+
+if(service){
+	window.location = service +'?ticket=ST-' + getRandomArbitrary(10000000000000000, 20000000000000000);
+} else {
+	$("body").append("ERROR: no service component specified. Ensure your URL ends with ?service=https://example.com")
+}
+</script>
+	</body>
+</html>
