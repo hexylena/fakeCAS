@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<style type="text/css">
+			#service { font-family: monospace }
+			.code {
+				white-space: pre-wrap;
+				background: #232629;
+				color: white;
+				padding: 1em;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			<div class="header">
+				<h1>Fake CAS Server</h1>
+			</div>
+			<div class="content-content">
+			st1
+		<h2>Apache Configuration</h2>
+<b><code>/etc/apache2/mods-enabled/auth_cas.conf</code></b>
+<pre class="code">
+CASLoginURL    https://erasche.github.io/fakeCAS/login.html
+CASValidateURL https://erasche.github.io/fakeCAS/serviceValidate.html
+</pre>
+<b><code>/etc/apache2/sites-enabled/default-ssl.conf</code></b>
+<pre class="code">
+&lt;Location "/"&gt;
+AuthName "CAS"
+AuthType CAS
+Require valid-user
+RequestHeader set CAS-User "%{REMOTE_USER}s@example.com"
+&lt;/Location&gt;
+</pre>
+</div>
+</div>
+	</body>
+</html>
