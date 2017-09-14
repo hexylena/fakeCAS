@@ -1,6 +1,5 @@
 <html>
 	<head>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
 		<style type="text/css">
 			#service { font-family: monospace }
 			.qq {
@@ -8,28 +7,28 @@
 				color: white;
 				border-radius: 4px;
 				text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-
 				background: rgb(28, 184, 65);
 				padding: 0.45em;
 			}
+			html {
+				background: #9bcef3;
+			}
 			body {
-				background-image: url(topography.png);
 				display: flex;
 				align-items: center;
 				justify-content: center
 			}
 			.content {
 				width: 25em;
-				background: #eeeeee;
+				background: white;
 				margin: auto;
 				padding: 0;
-				box-shadow: 2px 4px 5px 0px #aaa;
-				border-radius: 1%;
+				box-shadow: 2px 4px 5px 0px #6c6c6c;
 			}
 			.header {
-				background: #5d4fa0;
+				background: #ccc;
 				padding: 1.3em;
-				color:white"
+				color: black;
 			}
 			.header h1 {
 				text-align:center;
@@ -45,7 +44,7 @@
 	<body style="">
 		<div class="content">
 			<div class="header">
-				<h1>Simple CAS Server</h1>
+				<h1>Super Secure CAS Server</h1>
 			</div>
 			<div class="content-content">
 				<div style="text-align: center; margin-bottom: 2em">
@@ -73,14 +72,16 @@ var service = decodeURIComponent(href.substring(href.indexOf("login.html") + 19)
 function getRandomArbitrary(min, max) {
 	return Math.random() * (max - min) + min;
 }
+var service_el = document.getElementById("service"),
+	login_el = document.getElementById("login"),
+	error_el = document.getElementById("error");
 
 if(service){
-	$("#service").text(service);
-	$("#login").attr('href', service +'?ticket=ST-' + getRandomArbitrary(10000000000000000, 20000000000000000));
-	// Show the login button
-	$("#login").css('display', 'block');
+	service_el.innerHTML = service;
+	login_el.setAttribute('href', service +'?ticket=ST-' + getRandomArbitrary(10000000000000000, 20000000000000000))
+	login_el.style.display = 'block';
 } else {
-	$("#error").css('display', '');
+	error_el.style.display = '';
 }
 </script>
 	</body>
